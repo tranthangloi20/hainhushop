@@ -1,0 +1,17 @@
+create extension if not exists pgcrypto;
+create table if not exists public.products (id uuid primary key default gen_random_uuid(), name text not null, description text not null default '', price numeric(14,2) not null default 0 check (price >= 0), image_url text not null default '', created_at timestamptz not null default now());
+create table if not exists public.contact_messages (id uuid primary key default gen_random_uuid(), name text not null, email text not null, message text not null, created_at timestamptz not null default now());
+alter table public.products enable row level security;
+alter table public.contact_messages enable row level security;
+drop policy if exists products_public_read on public.products;
+create policy products_public_read on public.products for select using (true);
+drop policy if exists products_auth_insert on public.products;
+create policy products_auth_insert on public.products for insert to authenticated with check (true);
+drop policy if exists products_auth_update on public.products;
+create policy products_auth_update on public.products for update to authenticated using (true) with check (true);
+drop policy if exists products_auth_delete on public.products;
+create policy products_auth_delete on public.products for delete to authenticated using (true);
+drop policy if exists contact_public_insert on public.contact_messages;
+create policy contact_public_insert on public.contact_messages for insert to anon, authenticated with check (true);
+drop policy if exists contact_auth_read on public.contact_messages;
+create policy contact_auth_read on public.contact_messages for select to authenticated using (true);
