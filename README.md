@@ -1,46 +1,37 @@
 # hainhushop
 
-Angular + Supabase + Tailwind CSS shop.
+Angular + Tailwind CSS + Supabase ecommerce/nhà thuốc.
 
-## Features
+## Structure
 
-- Product search.
-- Product categories.
-- Hot/promotional products and regular products.
-- Zalo/phone contact flow instead of online checkout.
-- Doctor/pharmacist consultation call-to-action.
-- Admin login with Supabase Auth.
-- Admin product CRUD.
-- Product category selection.
-- Product image upload to Supabase Storage.
-- Lazy-loaded Angular routes.
-- Tailwind CSS v4.
+Each page keeps TypeScript, HTML and component CSS separate:
 
-## Before production
+- `src/app/home.component.ts`
+- `src/app/home.component.html`
+- `src/app/home.component.css`
 
-Update the phone numbers in:
+Tailwind utility classes are written in HTML. Shared/global styles are in `src/styles.css`.
 
-`src/app/shop-config.ts`
-
-The current values are placeholders.
-
-## Local development
+## Development
 
 ```bash
 npm install
 npm start
 ```
 
-## Build
+## Production build
 
 ```bash
 npm run build
 ```
 
-The Supabase database migration has already been applied to the connected project. The SQL migration is also kept in `supabase/migrations/` for source control.
+## Vercel
 
+The project is configured as an Angular SPA. `vercel.json` rewrites application routes to `index.html`.
 
+## Supabase
 
+Keep environment credentials in `src/environments/environment.ts` for the current project setup. Never commit service-role secrets.
 
 
 Vậy kiến trúc của hainhushop thực tế là
