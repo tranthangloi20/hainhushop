@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ping Supabase
+      - name: Ping Supabase REST API
         run: |
-          curl --fail --silent --show-error             -I "https://kykplvmvjcamxpxdkmxy.supabase.co"
+          curl --fail --silent --show-error \
+            "https://kykplvmvjcamxpxdkmxy.supabase.co/rest/v1/products?select=id&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}"
