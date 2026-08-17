@@ -3,11 +3,10 @@
   <div class="absolute -bottom-40 left-0 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl"></div>
   <div class="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:py-24">
     <div>
-      <div class="inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-3 py-2 shadow-lg backdrop-blur">
-        <app-pharmacy-logo [compact]="true" />
-        <span class="text-xs font-black tracking-[0.2em]">HẢI NHƯ SHOP</span>
-      </div>
-      <h1 class="mt-6 max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">Mua hàng tiện lợi, <span class="text-yellow-300 drop-shadow-[0_0_18px_rgba(250,204,21,0.28)]">tư vấn tận tâm.</span></h1>
+      <h1 class="mt-0 max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">
+        <span class="text-yellow-300 drop-shadow-[0_0_18px_rgba(250,204,21,0.28)]">Mua hàng tiện lợi,</span>
+        <span class="text-white"> tư vấn tận tâm.</span>
+      </h1>
       <p class="mt-6 max-w-2xl text-base leading-7 text-blue-50 sm:text-lg">Sản phẩm gia đình, chăm sóc cá nhân và nhà thuốc được tuyển chọn. Chọn sản phẩm rồi liên hệ người bán qua Zalo hoặc điện thoại.</p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a href="#products" class="rounded-2xl bg-white px-6 py-3 font-black text-blue-900 shadow-xl transition hover:-translate-y-0.5 hover:bg-cyan-50">Xem sản phẩm</a>
@@ -66,32 +65,6 @@
   </div>
 
   <div *ngIf="!loading && !error && !filteredItems.length" class="mt-8 rounded-3xl border border-dashed border-blue-200 bg-blue-50 p-12 text-center"><div class="text-3xl">🔎</div><p class="mt-3 font-bold text-slate-800">Không tìm thấy sản phẩm</p><p class="mt-1 text-sm text-slate-500">Thử từ khóa hoặc danh mục khác.</p></div>
-</section>
-
-<section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:pb-20">
-  <div class="overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-xl shadow-blue-100/50">
-    <div class="grid lg:grid-cols-[1.1fr_.9fr]">
-      <div class="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-blue-950 via-blue-800 to-cyan-700 p-8 text-white sm:p-10">
-        <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
-        <div class="relative flex h-full flex-col justify-between gap-8">
-          <div>
-            <p class="text-xs font-black tracking-[0.22em] text-yellow-300">HÌNH ẢNH NHÀ THUỐC</p>
-            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Hải Như Shop</h2>
-            <p class="mt-4 max-w-lg text-sm leading-7 text-blue-50">Xem hình ảnh thực tế, vị trí và thông tin nhà thuốc trên Google Maps.</p>
-          </div>
-          <a href="https://maps.app.goo.gl/pW8VeLDd5bcznhjH7" target="_blank" rel="noopener noreferrer" class="inline-flex w-fit items-center gap-2 rounded-2xl bg-white px-5 py-3 font-black text-blue-900 shadow-xl transition hover:-translate-y-0.5 hover:bg-yellow-50">📍 Xem hình ảnh nhà thuốc</a>
-        </div>
-      </div>
-      <div class="flex min-h-[280px] items-center justify-center bg-blue-50 p-8 sm:p-10">
-        <div class="w-full max-w-sm rounded-[2rem] border border-blue-100 bg-white p-8 text-center shadow-lg">
-          <div class="mx-auto grid h-20 w-20 place-items-center rounded-3xl bg-blue-50 text-4xl">💊</div>
-          <h3 class="mt-5 text-xl font-black text-blue-950">Nhà thuốc Hải Như</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-500">{{ config.address }}</p>
-          <a href="https://maps.app.goo.gl/pW8VeLDd5bcznhjH7" target="_blank" rel="noopener noreferrer" class="mt-5 block rounded-xl border border-blue-200 px-4 py-3 text-sm font-black text-blue-700 hover:bg-blue-50">Mở Google Maps</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <div *ngIf="selectedProduct" class="fixed inset-0 z-[100] grid place-items-center bg-slate-950/70 p-4 backdrop-blur-sm" (click)="closeProduct()">

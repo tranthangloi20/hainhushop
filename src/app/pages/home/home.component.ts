@@ -5,11 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { Category, Product } from '../../shared/models/product.model';
 import { SHOP_CONFIG } from '../../core/config/shop.config';
 import { SupabaseService } from '../../core/services/supabase.service';
-import { PharmacyLogoComponent } from '../../shared/components/pharmacy-logo/pharmacy-logo.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, FormsModule, PharmacyLogoComponent],
+  imports: [CommonModule, CurrencyPipe, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

@@ -1,7 +1,7 @@
 export const SHOP_CONFIG = {
-  shopName: 'HẢI NHƯ SHOP',
-  shopPhone: '0900000000',
-  pharmacistPhone: '0900000000',
-  zaloPhone: '0900000000',
-  address: 'Xã Lái Thiêu, TP. Hồ Chí Minh',
+  shopName: 'Hải Như Shop',
+  shopPhone: '0785525272',
+  pharmacistPhone: '02743756778',
+  zaloPhone: '0785525272',
+  address: 'C32 Bình Đức 1, Lái Thiêu, HCM',
 } as const;

@@ -30,17 +30,24 @@
   <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
     <div>
       <app-pharmacy-logo />
-      <p class="mt-4 max-w-sm text-sm leading-6 text-slate-500">Mua sắm tiện lợi, tư vấn tận tâm cho gia đình và nhà thuốc.</p>
+      <p class="mt-4 max-w-sm text-sm leading-6 text-slate-500">
+        <span class="font-bold text-amber-500">Mua hàng tiện lợi,</span>
+        <span class="font-bold text-white bg-blue-950 px-1"> tư vấn tận tâm.</span>
+      </p>
     </div>
+
     <div>
       <div class="font-black text-blue-950">Địa chỉ</div>
       <p class="mt-2 text-sm leading-6 text-slate-500">{{ config.address }}</p>
-      <a href="https://maps.app.goo.gl/pW8VeLDd5bcznhjH7" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-black text-white shadow-lg shadow-blue-100 hover:bg-blue-800">📍 Xem vị trí & hình ảnh</a>
     </div>
+
     <div>
       <div class="font-black text-blue-950">Liên hệ</div>
-      <p class="mt-2 text-sm leading-6 text-slate-500">Zalo · Điện thoại · Dược sĩ tư vấn</p>
-      <a [href]="'tel:' + config.shopPhone" class="mt-3 inline-block font-black text-blue-700">{{ config.shopPhone }}</a>
+      <div class="mt-2 grid gap-2 text-sm leading-6 text-slate-500">
+        <a [href]="'tel:' + config.shopPhone" class="font-semibold text-blue-700 hover:text-blue-900">Điện thoại shop: {{ config.shopPhone }}</a>
+        <a [href]="'https://zalo.me/' + config.zaloPhone" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-700 hover:text-blue-900">Zalo: {{ config.zaloPhone }}</a>
+        <a [href]="'tel:' + config.pharmacistPhone" class="font-semibold text-blue-700 hover:text-blue-900">Dược sĩ: {{ config.pharmacistPhone }}</a>
+      </div>
     </div>
   </div>
   <div class="border-t border-blue-100 py-4 text-center text-xs text-slate-400">© 2026 Hải Như Shop · All rights reserved.</div>
