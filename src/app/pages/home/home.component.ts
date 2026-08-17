@@ -5,17 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { Category, Product } from '../../shared/models/product.model';
 import { SHOP_CONFIG } from '../../core/config/shop.config';
 import { SupabaseService } from '../../core/services/supabase.service';
+import { PharmacyLogoComponent } from '../../shared/components/pharmacy-logo/pharmacy-logo.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, FormsModule],
+  imports: [CommonModule, CurrencyPipe, FormsModule, PharmacyLogoComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
   readonly fallbackImage = 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=900&q=80';
   readonly zaloLink = `https://zalo.me/${SHOP_CONFIG.zaloPhone}`;
-  readonly doctorTelLink = `tel:${SHOP_CONFIG.doctorPhone}`;
+  readonly pharmacistTelLink = `tel:${SHOP_CONFIG.pharmacistPhone}`;
   readonly shopPhoneLink = `tel:${SHOP_CONFIG.shopPhone}`;
   readonly config = SHOP_CONFIG;
 

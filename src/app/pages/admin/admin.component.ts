@@ -96,7 +96,7 @@ export class AdminComponent implements OnInit {
     if (!product.id || !window.confirm(`Xóa vĩnh viễn "${product.name}" khỏi database?`)) return;
 
     try {
-      await this.service.remove(product.id);
+      await this.service.remove(product);
       this.message = 'Đã xóa sản phẩm khỏi database.';
       await this.load();
     } catch (error) {

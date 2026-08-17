@@ -1,0 +1,16 @@
+<div class="logo-wrap" [class.logo-wrap--compact]="compact">
+  <div class="logo-mark" aria-hidden="true">
+    <svg viewBox="0 0 64 64" role="img">
+      <circle cx="32" cy="32" r="29" fill="white" />
+      <circle cx="32" cy="32" r="25" fill="none" stroke="#2563eb" stroke-width="3" />
+      <rect x="27" y="13" width="10" height="38" rx="4" fill="#2563eb" />
+      <rect x="13" y="27" width="38" height="10" rx="4" fill="#2563eb" />
+      <path d="M17 48c6 5 14 7 22 4" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" />
+      <circle cx="47" cy="17" r="5" fill="#facc15" />
+    </svg>
+  </div>
+  <div *ngIf="!compact" class="min-w-0">
+    <div class="logo-name" [class.logo-name--dark]="dark">HẢI NHƯ SHOP</div>
+    <div class="logo-subtitle">NHÀ THUỐC · TẠP HÓA</div>
+  </div>
+</div>

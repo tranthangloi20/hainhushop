@@ -60,9 +60,33 @@ export class SupabaseService {
     return data as Product;
   }
 
-  async remove(id: string): Promise<void> {
-    // Real DELETE against public.products. RLS only permits authenticated users.
-    const { error } = await this.db.from('products').delete().eq('id', id);
+  async remove(product: Product): Promise<void> {
+    if (!product.id) throw new Error('Không tìm thấy ID sản phẩm.');
+
+    // Xóa record trong database trước. Đây là DELETE thật, không chỉ ẩn sản phẩm.
+    const { error: dbError } = await this.db
+      .from('products')
+      .delete()
+      .eq('id', product.id);
+
+    if (dbError) throw dbError;
+
+    // Nếu ảnh nằm trong Supabase Storage thì xóa luôn object tương ứng.
+    // Ảnh ngoài (ví dụ Unsplash) sẽ được bỏ qua.
+    const storagePath = this.storagePathFromPublicUrl(product.image_url);
+    if (!storagePath) return;
+
+    const { error: storageError } = await this.db.storage
+      .from('product-images')
+      .remove([storagePath]);
+
+    if (storageError) {
+      console.warn('[HainhuShop] Product deleted but storage image could not be removed:', storageError);
+    }
+  }
+
+  async removeCategory(id: string): Promise<void> {
+    const { error } = await this.db.from('categories').delete().eq('id', id);
     if (error) throw error;
   }
 
@@ -95,11 +119,6 @@ export class SupabaseService {
     return data as Category;
   }
 
-  async removeCategory(id: string): Promise<void> {
-    const { error } = await this.db.from('categories').delete().eq('id', id);
-    if (error) throw error;
-  }
-
   async uploadProductImage(file: File, categorySlug: string): Promise<string> {
     const extension = file.name.split('.').pop()?.toLowerCase() || 'jpg';
     const safeName = file.name
@@ -128,6 +147,23 @@ export class SupabaseService {
 
   async user() {
     return (await this.db.auth.getUser()).data.user;
+  }
+
+  private storagePathFromPublicUrl(imageUrl?: string): string | null {
+    if (!imageUrl) return null;
+
+    try {
+      const url = new URL(imageUrl);
+      const marker = '/storage/v1/object/public/product-images/';
+      const index = url.pathname.indexOf(marker);
+
+      if (index === -1) return null;
+
+      const encodedPath = url.pathname.slice(index + marker.length);
+      return decodeURIComponent(encodedPath);
+    } catch {
+      return null;
+    }
   }
 
   private slugify(value: string): string {

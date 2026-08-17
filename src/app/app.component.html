@@ -1,8 +1,47 @@
-<header class="sticky top-0 z-50 border-b border-blue-100/80 bg-white/90 backdrop-blur-xl">
-  <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
-    <a routerLink="/" class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-blue-700 to-cyan-500 text-sm font-black text-white shadow-lg shadow-blue-200">HN</span><span><span class="block text-lg font-black tracking-[0.12em] text-blue-950">HẢI NHƯ SHOP</span><span class="hidden text-[10px] font-bold tracking-[0.18em] text-blue-500 sm:block">TIỆN LỢI · TẬN TÂM</span></span></a>
-    <nav class="flex items-center gap-1 text-sm font-bold text-slate-600"><a routerLink="/" class="rounded-xl px-3 py-2 transition hover:bg-blue-50 hover:text-blue-700">Sản phẩm</a><a routerLink="/policy" class="hidden rounded-xl px-3 py-2 transition hover:bg-blue-50 hover:text-blue-700 sm:block">Chính sách</a><a routerLink="/login" class="rounded-xl bg-blue-700 px-4 py-2.5 text-white shadow-md shadow-blue-200 transition hover:bg-blue-800">Đăng nhập</a></nav>
+<header class="sticky top-0 z-50 border-b border-blue-100/80 bg-white/95 backdrop-blur-xl">
+  <div class="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a routerLink="/" (click)="closeMenu()" class="min-w-0" aria-label="Hải Như Shop - Trang chủ">
+      <app-pharmacy-logo />
+    </a>
+
+    <nav class="hidden items-center gap-1 text-sm font-bold text-slate-600 md:flex">
+      <a routerLink="/" class="rounded-xl px-3 py-2 transition hover:bg-blue-50 hover:text-blue-700">Sản phẩm</a>
+      <a routerLink="/policy" class="rounded-xl px-3 py-2 transition hover:bg-blue-50 hover:text-blue-700">Chính sách</a>
+      <a routerLink="/login" class="rounded-xl bg-blue-700 px-4 py-2.5 text-white shadow-md shadow-blue-200 transition hover:bg-blue-800">Đăng nhập</a>
+    </nav>
+
+    <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-blue-100 bg-white text-blue-800 shadow-sm md:hidden" (click)="menuOpen = !menuOpen" [attr.aria-expanded]="menuOpen" aria-label="Mở menu">
+      <span class="text-2xl leading-none">{{ menuOpen ? '×' : '☰' }}</span>
+    </button>
+  </div>
+
+  <div *ngIf="menuOpen" class="border-t border-blue-100 bg-white px-4 pb-4 md:hidden">
+    <nav class="mx-auto grid max-w-7xl gap-2 pt-3 text-sm font-bold">
+      <a routerLink="/" (click)="closeMenu()" class="rounded-xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700">Sản phẩm</a>
+      <a routerLink="/policy" (click)="closeMenu()" class="rounded-xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700">Chính sách bán hàng</a>
+      <a routerLink="/login" (click)="closeMenu()" class="rounded-xl bg-blue-700 px-4 py-3 text-center text-white">Đăng nhập</a>
+    </nav>
   </div>
 </header>
+
 <main><router-outlet /></main>
-<footer class="border-t border-blue-100 bg-gradient-to-b from-white to-blue-50"><div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3"><div><div class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-blue-700 text-xs font-black text-white">HN</span><span class="text-lg font-black text-blue-950">HẢI NHƯ SHOP</span></div><p class="mt-3 text-sm leading-6 text-slate-500">Mua sắm tiện lợi, tư vấn tận tâm cho gia đình và nhà thuốc.</p></div><div><div class="font-black text-blue-950">Địa chỉ</div><p class="mt-2 text-sm text-slate-500">Xã Lái Thiêu, TP. Hồ Chí Minh</p></div><div><div class="font-black text-blue-950">Liên hệ</div><p class="mt-2 text-sm text-slate-500">Zalo · Điện thoại · Tư vấn nhà thuốc</p></div></div><div class="border-t border-blue-100 py-4 text-center text-xs text-slate-400">© 2026 Hải Như Shop · All rights reserved.</div></footer>
+
+<footer class="border-t border-blue-100 bg-gradient-to-b from-white to-blue-50">
+  <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
+    <div>
+      <app-pharmacy-logo />
+      <p class="mt-4 max-w-sm text-sm leading-6 text-slate-500">Mua sắm tiện lợi, tư vấn tận tâm cho gia đình và nhà thuốc.</p>
+    </div>
+    <div>
+      <div class="font-black text-blue-950">Địa chỉ</div>
+      <p class="mt-2 text-sm leading-6 text-slate-500">{{ config.address }}</p>
+      <a href="https://maps.app.goo.gl/pW8VeLDd5bcznhjH7" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-black text-white shadow-lg shadow-blue-100 hover:bg-blue-800">📍 Xem vị trí & hình ảnh</a>
+    </div>
+    <div>
+      <div class="font-black text-blue-950">Liên hệ</div>
+      <p class="mt-2 text-sm leading-6 text-slate-500">Zalo · Điện thoại · Dược sĩ tư vấn</p>
+      <a [href]="'tel:' + config.shopPhone" class="mt-3 inline-block font-black text-blue-700">{{ config.shopPhone }}</a>
+    </div>
+  </div>
+  <div class="border-t border-blue-100 py-4 text-center text-xs text-slate-400">© 2026 Hải Như Shop · All rights reserved.</div>
+</footer>

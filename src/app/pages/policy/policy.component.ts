@@ -10,5 +10,5 @@ import { SHOP_CONFIG } from '../../core/config/shop.config';
 export class PolicyComponent {
   readonly zaloLink = `https://zalo.me/${SHOP_CONFIG.zaloPhone}`;
   readonly shopTelLink = `tel:${SHOP_CONFIG.shopPhone}`;
-  readonly doctorTelLink = `tel:${SHOP_CONFIG.doctorPhone}`;
+  readonly pharmacistTelLink = `tel:${SHOP_CONFIG.pharmacistPhone}`;
 }
