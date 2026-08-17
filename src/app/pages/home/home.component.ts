@@ -13,21 +13,21 @@ import { SupabaseService } from '../../core/services/supabase.service';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  readonly fallbackImage =
-    'https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=900&q=80';
-
+  readonly fallbackImage = 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=900&q=80';
   readonly zaloLink = `https://zalo.me/${SHOP_CONFIG.zaloPhone}`;
   readonly doctorTelLink = `tel:${SHOP_CONFIG.doctorPhone}`;
+  readonly shopPhoneLink = `tel:${SHOP_CONFIG.shopPhone}`;
+  readonly config = SHOP_CONFIG;
 
   items: Product[] = [];
   filteredItems: Product[] = [];
   categories: Category[] = [];
-
   search = '';
   selectedCategory = '';
   hotOnly = false;
   loading = true;
   error = '';
+  selectedProduct: Product | null = null;
 
   constructor(
     private readonly service: SupabaseService,
@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit {
         this.service.products(),
         this.service.categories(),
       ]);
-
       this.items = products;
       this.categories = categories;
       this.filterProducts();
@@ -55,19 +54,10 @@ export class HomeComponent implements OnInit {
 
   filterProducts(): void {
     const keyword = this.search.trim().toLowerCase();
-
     this.filteredItems = this.items.filter((product) => {
-      const matchesKeyword =
-        !keyword ||
-        product.name.toLowerCase().includes(keyword) ||
-        product.description.toLowerCase().includes(keyword);
-
-      const matchesCategory =
-        !this.selectedCategory ||
-        product.category_id === this.selectedCategory;
-
+      const matchesKeyword = !keyword || product.name.toLowerCase().includes(keyword) || product.description.toLowerCase().includes(keyword);
+      const matchesCategory = !this.selectedCategory || product.category_id === this.selectedCategory;
       const matchesHot = !this.hotOnly || Boolean(product.is_hot);
-
       return matchesKeyword && matchesCategory && matchesHot;
     });
   }
@@ -75,6 +65,16 @@ export class HomeComponent implements OnInit {
   setHotFilter(value: boolean): void {
     this.hotOnly = value;
     this.filterProducts();
+  }
+
+  openProduct(product: Product): void {
+    this.selectedProduct = product;
+    document.body.classList.add('overflow-hidden');
+  }
+
+  closeProduct(): void {
+    this.selectedProduct = null;
+    document.body.classList.remove('overflow-hidden');
   }
 
   trackByProduct(index: number, product: Product): string | number {

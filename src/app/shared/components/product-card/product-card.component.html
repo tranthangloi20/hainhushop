@@ -1,37 +1,12 @@
-<article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-  <img
-    class="aspect-square w-full object-cover"
-    [src]="product.image_url"
-    [alt]="product.name"
-    loading="lazy"
-  />
-
+<article class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+  <img class="aspect-square w-full object-cover" [src]="product.image_url" [alt]="product.name" loading="lazy" />
   <div class="space-y-2 p-4">
     <div class="flex items-start justify-between gap-3">
       <h3 class="font-semibold text-slate-900">{{ product.name }}</h3>
-      <span
-        *ngIf="product.is_hot"
-        class="rounded-full bg-red-100 px-2 py-1 text-xs font-semibold text-red-700"
-      >
-        HOT
-      </span>
+      <span *ngIf="product.is_hot" class="rounded-full bg-orange-100 px-2 py-1 text-xs font-semibold text-orange-700">HOT</span>
     </div>
-
-    <p class="line-clamp-2 text-sm text-slate-500">
-      {{ product.description }}
-    </p>
-
-    <div class="flex items-end gap-2">
-      <strong class="text-lg text-emerald-700">
-        {{ (product.sale_price ?? product.price) | currency:'VND':'symbol':'1.0-0' }}
-      </strong>
-
-      <del
-        *ngIf="product.sale_price && product.sale_price < product.price"
-        class="text-sm text-slate-400"
-      >
-        {{ product.price | currency:'VND':'symbol':'1.0-0' }}
-      </del>
-    </div>
+    <p class="line-clamp-2 text-sm text-slate-500">{{ product.description }}</p>
+    <div class="flex items-end gap-2"><strong class="text-lg text-blue-700">{{ (product.sale_price ?? product.price) | currency:'VND':'symbol':'1.0-0' }}</strong><del *ngIf="product.sale_price" class="text-xs text-slate-400">{{ product.price | currency:'VND':'symbol':'1.0-0' }}</del></div>
+    <div class="text-xs font-bold" [class.text-emerald-600]="product.stock > 0" [class.text-red-600]="product.stock === 0">{{ product.stock > 0 ? 'Còn ' + product.stock + ' sản phẩm' : 'Hết hàng' }}</div>
   </div>
 </article>

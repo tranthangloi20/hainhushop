@@ -25,7 +25,7 @@ export class SupabaseService {
   async categories(): Promise<Category[]> {
     const { data, error } = await this.db
       .from('categories')
-      .select('id,name,slug')
+      .select('id,name,slug,created_at')
       .order('name');
 
     if (error) throw error;
@@ -38,28 +38,65 @@ export class SupabaseService {
       description: product.description?.trim() ?? '',
       price: Number(product.price),
       sale_price:
-        product.sale_price === null ||
-        product.sale_price === undefined ||
-        product.sale_price === 0
+        product.sale_price === null || product.sale_price === undefined || product.sale_price === 0
           ? null
           : Number(product.sale_price),
+      stock: Math.max(0, Number(product.stock ?? 0)),
       image_url: product.image_url?.trim() ?? '',
       category_id: product.category_id || null,
       is_hot: Boolean(product.is_hot),
+      updated_at: new Date().toISOString(),
     };
 
     const query = product.id
       ? this.db.from('products').update(payload).eq('id', product.id)
       : this.db.from('products').insert(payload);
 
-    const { data, error } = await query.select('*, category:categories(id,name,slug)').single();
+    const { data, error } = await query
+      .select('*, category:categories(id,name,slug)')
+      .single();
 
     if (error) throw error;
     return data as Product;
   }
 
   async remove(id: string): Promise<void> {
+    // Real DELETE against public.products. RLS only permits authenticated users.
     const { error } = await this.db.from('products').delete().eq('id', id);
+    if (error) throw error;
+  }
+
+  async createCategory(name: string): Promise<Category> {
+    const cleanName = name.trim();
+    if (!cleanName) throw new Error('Tên danh mục không được để trống.');
+
+    const { data, error } = await this.db
+      .from('categories')
+      .insert({ name: cleanName, slug: this.slugify(cleanName) })
+      .select('id,name,slug,created_at')
+      .single();
+
+    if (error) throw error;
+    return data as Category;
+  }
+
+  async updateCategory(category: Category): Promise<Category> {
+    const cleanName = category.name.trim();
+    if (!cleanName) throw new Error('Tên danh mục không được để trống.');
+
+    const { data, error } = await this.db
+      .from('categories')
+      .update({ name: cleanName, slug: this.slugify(cleanName) })
+      .eq('id', category.id)
+      .select('id,name,slug,created_at')
+      .single();
+
+    if (error) throw error;
+    return data as Category;
+  }
+
+  async removeCategory(id: string): Promise<void> {
+    const { error } = await this.db.from('categories').delete().eq('id', id);
     if (error) throw error;
   }
 
@@ -69,21 +106,16 @@ export class SupabaseService {
       .replace(/\.[^/.]+$/, '')
       .replace(/[^a-zA-Z0-9-_]+/g, '-')
       .toLowerCase();
-
     const path = `${categorySlug}/${Date.now()}-${safeName}.${extension}`;
 
-    const { error } = await this.db.storage
-      .from('product-images')
-      .upload(path, file, {
-        cacheControl: '3600',
-        contentType: file.type,
-        upsert: false,
-      });
+    const { error } = await this.db.storage.from('product-images').upload(path, file, {
+      cacheControl: '3600',
+      contentType: file.type,
+      upsert: false,
+    });
 
     if (error) throw error;
-
-    const { data } = this.db.storage.from('product-images').getPublicUrl(path);
-    return data.publicUrl;
+    return this.db.storage.from('product-images').getPublicUrl(path).data.publicUrl;
   }
 
   async login(email: string, password: string) {
@@ -96,5 +128,15 @@ export class SupabaseService {
 
   async user() {
     return (await this.db.auth.getUser()).data.user;
+  }
+
+  private slugify(value: string): string {
+    return value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/đ/g, 'd')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
   }
 }

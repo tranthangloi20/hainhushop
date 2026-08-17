@@ -23,6 +23,7 @@ create table if not exists public.products (
   image_url text not null default '',
   category_id uuid references public.categories(id) on delete set null,
   sale_price numeric(14,2) check (sale_price is null or sale_price >= 0),
+  stock integer not null default 0 check (stock >= 0),
   is_hot boolean not null default false,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -38,6 +39,7 @@ create table if not exists public.contact_messages (
 
 alter table public.products add column if not exists category_id uuid references public.categories(id) on delete set null;
 alter table public.products add column if not exists sale_price numeric(14,2) check (sale_price is null or sale_price >= 0);
+alter table public.products add column if not exists stock integer not null default 0 check (stock >= 0);
 alter table public.products add column if not exists is_hot boolean not null default false;
 alter table public.products add column if not exists updated_at timestamptz not null default now();
 

@@ -1,37 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
-@source "./app";
 
 @theme {
-  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: #fafaf9;
-  color: #1c1917;
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: #f8fbff;
+  color: #0f172a;
+  font-family: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 3px solid rgba(245, 158, 11, 0.45);
+button, input, textarea, select { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.3);
   outline-offset: 2px;
 }
-
-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-}
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }

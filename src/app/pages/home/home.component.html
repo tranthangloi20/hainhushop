@@ -1,198 +1,83 @@
-<section class="bg-stone-950 text-white">
-  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-24">
+<section class="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-800 to-cyan-700 text-white">
+  <div class="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
+  <div class="absolute -bottom-40 left-0 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl"></div>
+  <div class="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:py-24">
     <div>
-      <span class="inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-bold tracking-[0.2em] text-stone-300">
-        HẢI NHƯ SHOP
-      </span>
-
-      <h1 class="mt-6 max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">
-        Mua hàng tiện lợi,
-        <span class="text-amber-300"> tư vấn tận tâm.</span>
-      </h1>
-
-      <p class="mt-6 max-w-2xl text-base leading-7 text-stone-300 sm:text-lg">
-        Sản phẩm gia đình, chăm sóc cá nhân và nhà thuốc được tuyển chọn.
-        Chọn sản phẩm rồi liên hệ người bán qua Zalo hoặc điện thoại.
-      </p>
-
+      <div class="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 shadow-lg backdrop-blur">
+        <span class="grid h-8 w-8 place-items-center rounded-xl bg-white text-sm font-black text-blue-800">HN</span>
+        <span class="text-xs font-black tracking-[0.2em]">HẢI NHƯ SHOP</span>
+      </div>
+      <h1 class="mt-6 max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">Mua hàng tiện lợi, <span class="text-cyan-200">tư vấn tận tâm.</span></h1>
+      <p class="mt-6 max-w-2xl text-base leading-7 text-blue-50 sm:text-lg">Sản phẩm gia đình, chăm sóc cá nhân và nhà thuốc được tuyển chọn. Chọn sản phẩm rồi liên hệ người bán qua Zalo hoặc điện thoại.</p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a
-          href="#products"
-          class="rounded-full bg-amber-300 px-6 py-3 font-bold text-stone-950 transition hover:bg-amber-200"
-        >
-          Xem sản phẩm
-        </a>
-
-        <a
-          href="/policy"
-          class="rounded-full border border-white/20 px-6 py-3 font-bold transition hover:bg-white/10"
-        >
-          Cách mua hàng
-        </a>
+        <a href="#products" class="rounded-2xl bg-white px-6 py-3 font-black text-blue-900 shadow-xl transition hover:-translate-y-0.5 hover:bg-cyan-50">Xem sản phẩm</a>
+        <a href="/policy" class="rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-black backdrop-blur transition hover:bg-white/15">Cách mua hàng</a>
       </div>
     </div>
-
-    <div class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl">
-      <div class="text-sm font-semibold text-stone-300">Tư vấn nhà thuốc</div>
-      <div class="mt-2 text-2xl font-black">Cần hỏi bác sĩ?</div>
-      <p class="mt-2 text-sm leading-6 text-stone-400">
-        Với vấn đề sức khỏe hoặc thuốc kê đơn, hãy liên hệ bác sĩ/dược sĩ
-        để được tư vấn trước khi sử dụng.
-      </p>
-
-      <a
-        [href]="doctorTelLink"
-        class="mt-6 block rounded-2xl bg-white px-5 py-4 text-center font-black text-stone-900 hover:bg-stone-100"
-      >
-        ☎ Gọi bác sĩ tư vấn
-      </a>
-
-      <p class="mt-3 text-center text-xs text-stone-500">
-        Số tư vấn đang là số mẫu — thay trong <code>shop-config</code>.
-      </p>
+    <div class="rounded-[2rem] border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur-xl">
+      <div class="flex items-center gap-3">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl text-blue-800 shadow-lg">✚</span>
+        <div><div class="text-sm font-semibold text-blue-100">Tư vấn nhà thuốc</div><div class="text-2xl font-black">Cần hỏi bác sĩ?</div></div>
+      </div>
+      <p class="mt-5 text-sm leading-6 text-blue-50">Với vấn đề sức khỏe hoặc thuốc kê đơn, hãy liên hệ bác sĩ/dược sĩ để được tư vấn trước khi sử dụng.</p>
+      <a [href]="doctorTelLink" class="mt-6 block rounded-2xl bg-white px-5 py-4 text-center font-black text-blue-900 shadow-lg transition hover:-translate-y-0.5 hover:bg-cyan-50">☎ Gọi bác sĩ tư vấn</a>
     </div>
   </div>
 </section>
 
 <section id="products" class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16">
   <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-    <div>
-      <p class="text-xs font-black tracking-[0.22em] text-amber-700">DANH MỤC SẢN PHẨM</p>
-      <h2 class="mt-2 text-3xl font-black tracking-tight text-stone-950 sm:text-4xl">
-        Mua sắm dễ dàng
-      </h2>
-    </div>
-
-    <div class="text-sm font-semibold text-stone-500">
-      {{ filteredItems.length }} sản phẩm
-    </div>
+    <div><p class="text-xs font-black tracking-[0.22em] text-blue-700">DANH MỤC SẢN PHẨM</p><h2 class="mt-2 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Mua sắm dễ dàng</h2></div>
+    <div class="rounded-full bg-blue-50 px-4 py-2 text-sm font-black text-blue-800">{{ filteredItems.length }} sản phẩm</div>
   </div>
 
   <div class="mt-8 grid gap-3 lg:grid-cols-[1fr_auto]">
     <label class="relative block">
-      <span class="sr-only">Tìm sản phẩm</span>
-      <input
-        [(ngModel)]="search"
-        (ngModelChange)="filterProducts()"
-        type="search"
-        placeholder="Tìm tên sản phẩm..."
-        class="w-full rounded-2xl border border-stone-200 bg-white px-5 py-3.5 text-sm outline-none ring-0 transition focus:border-stone-500"
-      />
+      <span class="sr-only">Tìm sản phẩm</span><span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg text-blue-500">⌕</span>
+      <input [(ngModel)]="search" (ngModelChange)="filterProducts()" type="search" placeholder="Bạn muốn mua gì hôm nay..." class="w-full rounded-2xl border border-blue-100 bg-white px-12 py-3.5 text-sm shadow-sm outline-none placeholder:text-slate-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-100" />
     </label>
-
-    <select
-      [(ngModel)]="selectedCategory"
-      (ngModelChange)="filterProducts()"
-      class="rounded-2xl border border-stone-200 bg-white px-5 py-3.5 text-sm font-semibold text-stone-700 outline-none"
-    >
-      <option value="">Tất cả danh mục</option>
-      <option *ngFor="let category of categories" [value]="category.id">
-        {{ category.name }}
-      </option>
+    <select [(ngModel)]="selectedCategory" (ngModelChange)="filterProducts()" class="rounded-2xl border border-blue-100 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 shadow-sm outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100">
+      <option value="">Tất cả danh mục</option><option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
     </select>
   </div>
 
   <div class="mt-5 flex gap-2 overflow-x-auto pb-2">
-    <button
-      type="button"
-      (click)="setHotFilter(false)"
-      [class.bg-stone-900]="!hotOnly"
-      [class.text-white]="!hotOnly"
-      class="shrink-0 rounded-full border border-stone-200 px-4 py-2 text-sm font-bold"
-    >
-      Tất cả
-    </button>
-
-    <button
-      type="button"
-      (click)="setHotFilter(true)"
-      [class.bg-rose-600]="hotOnly"
-      [class.text-white]="hotOnly"
-      class="shrink-0 rounded-full border border-stone-200 px-4 py-2 text-sm font-bold"
-    >
-      🔥 Khuyến mãi hot
-    </button>
+    <button type="button" (click)="setHotFilter(false)" [class.bg-blue-700]="!hotOnly" [class.text-white]="!hotOnly" class="shrink-0 rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-bold shadow-sm">Tất cả</button>
+    <button type="button" (click)="setHotFilter(true)" [class.bg-orange-500]="hotOnly" [class.text-white]="hotOnly" class="shrink-0 rounded-full border border-orange-100 bg-white px-4 py-2 text-sm font-bold shadow-sm">🔥 Khuyến mãi hot</button>
   </div>
 
-  <div *ngIf="loading" class="py-20 text-center text-stone-500">
-    Đang tải sản phẩm...
-  </div>
+  <div *ngIf="loading" class="py-20 text-center text-slate-500">Đang tải sản phẩm...</div>
+  <div *ngIf="!loading && error" class="mt-8 rounded-2xl bg-red-50 p-5 text-sm font-semibold text-red-700">{{ error }}</div>
 
-  <div *ngIf="!loading && error" class="mt-8 rounded-2xl bg-red-50 p-5 text-sm font-semibold text-red-700">
-    {{ error }}
-  </div>
-
-  <div
-    *ngIf="!loading && !error && filteredItems.length"
-    class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-  >
-    <article
-      *ngFor="let product of filteredItems; trackBy: trackByProduct"
-      class="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-    >
-      <div class="relative aspect-[4/3] overflow-hidden bg-stone-100">
-        <img
-          [src]="product.image_url || fallbackImage"
-          [alt]="product.name"
-          loading="lazy"
-          class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-        />
-
-        <span
-          *ngIf="product.is_hot"
-          class="absolute left-3 top-3 rounded-full bg-rose-600 px-3 py-1 text-xs font-black text-white shadow"
-        >
-          🔥 HOT
-        </span>
-
-        <span
-          *ngIf="product.category"
-          class="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-stone-700 backdrop-blur"
-        >
-          {{ product.category.name }}
-        </span>
+  <div *ngIf="!loading && !error && filteredItems.length" class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <article *ngFor="let product of filteredItems; trackBy: trackByProduct" (click)="openProduct(product)" class="group cursor-pointer overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-100">
+      <div class="relative aspect-[4/3] overflow-hidden bg-blue-50">
+        <img [src]="product.image_url || fallbackImage" [alt]="product.name" loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <span *ngIf="product.is_hot" class="absolute left-3 top-3 rounded-full bg-orange-500 px-3 py-1 text-xs font-black text-white shadow">🔥 HOT</span>
+        <span *ngIf="product.category" class="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-blue-800 backdrop-blur">{{ product.category.name }}</span>
       </div>
-
       <div class="p-5">
-        <h3 class="line-clamp-2 min-h-12 text-lg font-black text-stone-950">
-          {{ product.name }}
-        </h3>
-
-        <p class="mt-2 line-clamp-2 min-h-10 text-sm leading-5 text-stone-500">
-          {{ product.description }}
-        </p>
-
-        <div class="mt-4 flex items-end gap-2">
-          <strong class="text-xl font-black text-stone-950">
-            {{ (product.sale_price || product.price) | currency:'VND':'symbol':'1.0-0' }}
-          </strong>
-
-          <del
-            *ngIf="product.sale_price"
-            class="text-sm text-stone-400"
-          >
-            {{ product.price | currency:'VND':'symbol':'1.0-0' }}
-          </del>
-        </div>
-
-        <a
-          [href]="zaloLink"
-          target="_blank"
-          rel="noopener"
-          class="mt-5 block rounded-2xl bg-stone-900 px-4 py-3 text-center text-sm font-black text-white transition hover:bg-stone-700"
-        >
-          Chọn sản phẩm · Liên hệ Zalo
-        </a>
+        <h3 class="line-clamp-2 min-h-12 text-lg font-black text-slate-950">{{ product.name }}</h3>
+        <p class="mt-2 line-clamp-2 min-h-10 text-sm leading-5 text-slate-500">{{ product.description }}</p>
+        <div class="mt-4 flex items-end gap-2"><strong class="text-xl font-black text-blue-700">{{ (product.sale_price || product.price) | currency:'VND':'symbol':'1.0-0' }}</strong><del *ngIf="product.sale_price" class="text-sm text-slate-400">{{ product.price | currency:'VND':'symbol':'1.0-0' }}</del></div>
+        <div class="mt-3 flex items-center justify-between text-xs font-bold"><span [class.text-red-600]="product.stock === 0" [class.text-emerald-600]="product.stock > 0">{{ product.stock > 0 ? 'Còn ' + product.stock + ' sản phẩm' : 'Hết hàng' }}</span><span class="text-blue-600">Xem chi tiết →</span></div>
       </div>
     </article>
   </div>
 
-  <div
-    *ngIf="!loading && !error && !filteredItems.length"
-    class="mt-8 rounded-3xl border border-dashed border-stone-300 bg-stone-50 p-12 text-center"
-  >
-    <div class="text-3xl">🔎</div>
-    <p class="mt-3 font-bold text-stone-800">Không tìm thấy sản phẩm</p>
-    <p class="mt-1 text-sm text-stone-500">Thử từ khóa hoặc danh mục khác.</p>
-  </div>
+  <div *ngIf="!loading && !error && !filteredItems.length" class="mt-8 rounded-3xl border border-dashed border-blue-200 bg-blue-50 p-12 text-center"><div class="text-3xl">🔎</div><p class="mt-3 font-bold text-slate-800">Không tìm thấy sản phẩm</p><p class="mt-1 text-sm text-slate-500">Thử từ khóa hoặc danh mục khác.</p></div>
 </section>
+
+<div *ngIf="selectedProduct" class="fixed inset-0 z-[100] grid place-items-center bg-slate-950/70 p-4 backdrop-blur-sm" (click)="closeProduct()">
+  <div class="max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-[2rem] bg-white shadow-2xl" (click)="$event.stopPropagation()">
+    <div class="relative"><img [src]="selectedProduct.image_url || fallbackImage" [alt]="selectedProduct.name" class="h-64 w-full object-cover sm:h-80" /><button type="button" (click)="closeProduct()" class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-xl font-black text-slate-800 shadow">×</button></div>
+    <div class="p-6 sm:p-8">
+      <div class="flex flex-wrap gap-2"><span *ngIf="selectedProduct.category" class="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">{{ selectedProduct.category.name }}</span><span *ngIf="selectedProduct.is_hot" class="rounded-full bg-orange-100 px-3 py-1 text-xs font-black text-orange-700">🔥 HOT</span></div>
+      <h2 class="mt-4 text-3xl font-black text-slate-950">{{ selectedProduct.name }}</h2>
+      <p class="mt-4 whitespace-pre-line text-sm leading-7 text-slate-600">{{ selectedProduct.description }}</p>
+      <div class="mt-6 flex flex-wrap items-end gap-3"><strong class="text-3xl font-black text-blue-700">{{ (selectedProduct.sale_price || selectedProduct.price) | currency:'VND':'symbol':'1.0-0' }}</strong><del *ngIf="selectedProduct.sale_price" class="text-sm text-slate-400">{{ selectedProduct.price | currency:'VND':'symbol':'1.0-0' }}</del></div>
+      <div class="mt-5 rounded-2xl bg-blue-50 p-4"><div class="text-sm font-black text-blue-900">Tình trạng hàng</div><div class="mt-1 text-lg font-bold" [class.text-emerald-600]="selectedProduct.stock > 0" [class.text-red-600]="selectedProduct.stock === 0">{{ selectedProduct.stock > 0 ? 'Còn ' + selectedProduct.stock + ' sản phẩm' : 'Hết hàng' }}</div></div>
+      <div class="mt-6 grid gap-3 sm:grid-cols-2"><a [href]="zaloLink" target="_blank" rel="noopener" class="rounded-2xl bg-blue-700 px-5 py-4 text-center font-black text-white shadow-lg shadow-blue-200 transition hover:bg-blue-800">Liên hệ Zalo</a><a [href]="shopPhoneLink" class="rounded-2xl border border-blue-200 bg-white px-5 py-4 text-center font-black text-blue-700 transition hover:bg-blue-50">Gọi {{ config.shopPhone }}</a></div>
+    </div>
+  </div>
+</div>
