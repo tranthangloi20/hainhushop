@@ -1,24 +1,46 @@
 # hainhushop
 
-Angular 21 + Supabase. Routes: `/`, `/contact`, `/admin`.
+Angular + Supabase + Tailwind CSS shop.
 
-## Push to GitHub
-```bash
-git clone https://github.com/tranthangloi20/hainhushop.git
-cd hainhushop
-# copy this project here
-git add .
-git commit -m "feat: build hainhushop"
-git push origin main
-```
+## Features
 
-## Run
+- Product search.
+- Product categories.
+- Hot/promotional products and regular products.
+- Zalo/phone contact flow instead of online checkout.
+- Doctor/pharmacist consultation call-to-action.
+- Admin login with Supabase Auth.
+- Admin product CRUD.
+- Product category selection.
+- Product image upload to Supabase Storage.
+- Lazy-loaded Angular routes.
+- Tailwind CSS v4.
+
+## Before production
+
+Update the phone numbers in:
+
+`src/app/shop-config.ts`
+
+The current values are placeholders.
+
+## Local development
+
 ```bash
 npm install
 npm start
 ```
 
-The Supabase publishable key is safe for frontend use; database access is protected by RLS.
+## Build
+
+```bash
+npm run build
+```
+
+The Supabase database migration has already been applied to the connected project. The SQL migration is also kept in `supabase/migrations/` for source control.
+
+
+
 
 
 Vậy kiến trúc của hainhushop thực tế là

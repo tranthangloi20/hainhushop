@@ -1,1 +1,31 @@
-import {Routes} from '@angular/router';import {HomeComponent} from './home.component';import {ContactComponent} from './contact.component';import {AdminComponent} from './admin.component';export const routes:Routes=[{path:'',component:HomeComponent},{path:'contact',component:ContactComponent},{path:'admin',component:AdminComponent},{path:'**',redirectTo:''}];
+import { Routes } from '@angular/router';
+
+import { authGuard } from './auth.guard';
+
+export const routes: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'policy',
+    loadComponent: () =>
+      import('./policy.component').then((m) => m.PolicyComponent),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'admin',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./admin.component').then((m) => m.AdminComponent),
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
+];

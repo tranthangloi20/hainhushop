@@ -1,1 +1,36 @@
-*{box-sizing:border-box}body{margin:0;background:#f8f6f1;color:#25251f;font-family:Arial,sans-serif}a{text-decoration:none;color:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}header{background:#fff;border-bottom:1px solid #e7e2d8;position:sticky;top:0;z-index:5}.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:800;letter-spacing:1px}.nav nav{display:flex;gap:24px;font-size:14px}.hero{padding:90px 0;background:#eee5d2}.hero small,.page>small,.title small{letter-spacing:2px;font-weight:bold;font-size:11px}.hero h1,.page h1{font:700 clamp(42px,7vw,76px)/1.05 Georgia,serif;margin:16px 0}.hero em{color:#8b6b3f}.hero p{max-width:580px;font-size:18px;line-height:1.7;color:#68645b}.products{padding:70px 0}.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.title h2{font:700 36px Georgia;margin:8px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.grid article{background:white;border:1px solid #e7e2d8;border-radius:14px;overflow:hidden}.grid img{width:100%;aspect-ratio:4/3;object-fit:cover}.grid article>div{padding:20px}.grid h3{margin:0 0 8px}.grid p{color:#777;line-height:1.5;min-height:44px}.grid strong{display:block;margin:16px 0;font-size:18px}.grid button,form button{width:100%;padding:13px;border:0;border-radius:8px;background:#25251f;color:white;font-weight:bold}.page{padding:70px 0}.contact,.admin{display:grid;grid-template-columns:1fr 1.2fr;gap:35px;margin-top:35px}.contact form,.panel form{display:grid;gap:14px}.panel{background:white;border:1px solid #e4dfd4;border-radius:14px;padding:25px}.contact input,.contact textarea,input,textarea{padding:13px;border:1px solid #d9d4ca;border-radius:8px;font:inherit}.ok{color:green}.err{color:#b00}.item{display:grid;grid-template-columns:70px 1fr auto auto auto;gap:10px;align-items:center;background:white;padding:10px;margin:10px 0;border:1px solid #e4dfd4;border-radius:10px}.item img{width:70px;height:55px;object-fit:cover;border-radius:6px}.outline,.danger{padding:9px;border:1px solid #ccc;background:white;border-radius:7px}.danger{color:#b00}footer{border-top:1px solid #e4dfd8;padding:28px;text-align:center;color:#777;margin-top:40px}@media(max-width:800px){.grid,.contact,.admin{grid-template-columns:1fr}.item{grid-template-columns:55px 1fr auto}.item img{width:55px}.nav nav{gap:10px}}
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fafaf9;
+  color: #1c1917;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(245, 158, 11, 0.45);
+  outline-offset: 2px;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}

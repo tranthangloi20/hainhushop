@@ -1,1 +1,54 @@
-import {Component} from '@angular/core';import {RouterLink,RouterOutlet} from '@angular/router';@Component({selector:'app-root',standalone:true,imports:[RouterLink,RouterOutlet],template:`<header><div class="wrap nav"><a class="logo" routerLink="">HẢI NHƯ SHOP</a><nav><a routerLink="">Sản phẩm</a><a routerLink="/contact">Liên hệ</a><a routerLink="/admin">Quản trị</a></nav></div></header><main><router-outlet/></main><footer>© 2026 Hải Như Shop</footer>`})export class AppComponent{}
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterLink, RouterOutlet],
+  template: `
+    <header class="sticky top-0 z-50 border-b border-stone-200/80 bg-white/95 backdrop-blur">
+      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+        <a
+          routerLink="/"
+          class="text-lg font-black tracking-[0.18em] text-stone-900"
+        >
+          HẢI NHƯ SHOP
+        </a>
+
+        <nav class="flex items-center gap-2 text-sm font-semibold text-stone-600">
+          <a
+            routerLink="/"
+            class="rounded-full px-4 py-2 transition hover:bg-stone-100 hover:text-stone-950"
+          >
+            Sản phẩm
+          </a>
+
+          <a
+            routerLink="/policy"
+            class="rounded-full px-4 py-2 transition hover:bg-stone-100 hover:text-stone-950"
+          >
+            Chính sách bán hàng
+          </a>
+
+          <a
+            routerLink="/login"
+            class="rounded-full bg-stone-900 px-4 py-2 text-white transition hover:bg-stone-700"
+          >
+            Đăng nhập
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <router-outlet />
+    </main>
+
+    <footer class="border-t border-stone-200 bg-white">
+      <div class="mx-auto max-w-7xl px-4 py-8 text-sm text-stone-500 sm:px-6">
+        © 2026 Hải Như Shop · Nhà thuốc & cửa hàng tiện ích
+      </div>
+    </footer>
+  `,
+})
+export class AppComponent {}
