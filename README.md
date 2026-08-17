@@ -32,3 +32,4 @@ The project is configured as an Angular SPA. `vercel.json` rewrites application 
 ## Supabase
 
 Keep environment credentials in `src/environments/environment.ts` for the current project setup. Never commit service-role secrets.
+ád
